@@ -50,6 +50,12 @@ function populateUI(data, pageContext) {
     renderSections('projects-sections', data.projects_sections || [], 'projects');
     return;
   }
+  if (pageContext === 'bio') {
+    const recentWorkPhotos = data.home_recent_works || data.home_photos || [];
+    const heroPhoto = data.bio_photo || recentWorkPhotos[0] || '';
+    renderBioHero(heroPhoto);
+    return;
+  }
 
   const recentWorkPhotos = data.home_recent_works || data.home_photos || [];
 
@@ -107,13 +113,11 @@ function setBaseSiteInfo(data, pageContext) {
   const titleSuffixMap = {
     'love-stories': 'Storie d\'amore',
     'authentic-portraits': 'Ritratti autentici',
-    'projects': 'Progetti'
+    'projects': 'Progetti',
+    'bio': 'Bio'
   };
   const suffix = titleSuffixMap[pageContext];
   document.title = suffix ? `${data.tab_title} | ${suffix}` : data.tab_title;
-
-  const uiName = document.getElementById('ui-name');
-  if (uiName) uiName.textContent = data.main_title;
 
   const textEmail = document.getElementById('text-email');
   if (textEmail) {
