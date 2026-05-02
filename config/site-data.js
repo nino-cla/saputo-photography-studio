@@ -1,8 +1,7 @@
 const siteGenerated = {
   "bio_photo": "assets/img/bio/1.webp",
   "home_photos": [
-    "assets/img/home/1.webp",
-    "assets/img/home/2.webp"
+    "assets/img/home/1.webp"
   ],
   "love_stories_sections": [
     {

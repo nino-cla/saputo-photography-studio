@@ -172,7 +172,7 @@ function renderHomePhotos(photos) {
       overlay.className = 'photo-overlay';
       const text = document.createElement('h1');
       text.className = 'overlay-text';
-      text.textContent = 'Nino Claudio Saputo | Fotografo';
+      text.textContent = 'Non cerco pose, racconto ciò che accade davvero.';
       overlay.appendChild(text);
       section.appendChild(overlay);
     }
