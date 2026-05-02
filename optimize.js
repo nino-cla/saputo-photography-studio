@@ -5,8 +5,8 @@ const sharp = require('sharp');
 
 const ROOT_DIR = __dirname;
 const HOME_DIR = path.join(ROOT_DIR, 'assets', 'img', 'home');
-const HOME_BIO_DIR = path.join(HOME_DIR, 'bio');
 const HOME_RECENT_DIR = path.join(HOME_DIR, 'recent-works');
+const HOME_BIO_DIR = path.join(ROOT_DIR, 'assets', 'img', 'bio');
 const LOVE_STORIES_DIR = path.join(ROOT_DIR, 'assets', 'img', 'love-stories');
 const AUTHENTIC_PORTRAITS_DIR = path.join(ROOT_DIR, 'assets', 'img', 'authentic-portraits');
 const PROJECTS_DIR = path.join(ROOT_DIR, 'assets', 'img', 'projects');
@@ -40,7 +40,7 @@ const SUPPORTED_EXTENSIONS = new Set([...SOURCE_EXTENSIONS, '.webp']);
 
     console.log(`>> Scansione Love Stories`);
     const loveStoriesSections = await buildSections(LOVE_STORIES_DIR);
-    
+
     console.log(`>> Scansione Authentic Portraits`);
     const authenticPortraitsSections = await buildSections(AUTHENTIC_PORTRAITS_DIR);
 
@@ -128,16 +128,16 @@ async function removeFile(filePath, retries = 3) {
       return;
     } catch (error) {
       if (error.code === 'ENOENT') return;
-      
+
       if (i === retries - 1) {
         console.warn(`Attenzione: impossibile eliminare ${filePath}. Proseguo lasciando il file originale.`, error.message);
         return;
       }
-      
+
       try {
         await fsp.chmod(filePath, 0o666);
-      } catch (e) {}
-      
+      } catch (e) { }
+
       await delay(500); // attendi 500ms per dare tempo a Windows di sbloccare il file
     }
   }
