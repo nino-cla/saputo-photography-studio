@@ -48,13 +48,13 @@ const siteGenerated = {
   ],
   "authentic_portraits_sections": [
     {
-      "slug": "portraits",
-      "title": "Portraits",
+      "slug": "Ritratti Autentici",
+      "title": "Ritratti Autentici",
       "photos": [
-        "assets/img/authentic-portraits/portraits/DSF2648.webp",
-        "assets/img/authentic-portraits/portraits/DSF4564.webp",
-        "assets/img/authentic-portraits/portraits/IMG_20201112_191655_694.webp",
-        "assets/img/authentic-portraits/portraits/IMG_20210520_185702_013.webp"
+        "assets/img/authentic-portraits/Ritratti Autentici/DSF2648.webp",
+        "assets/img/authentic-portraits/Ritratti Autentici/DSF4564.webp",
+        "assets/img/authentic-portraits/Ritratti Autentici/IMG_20201112_191655_694.webp",
+        "assets/img/authentic-portraits/Ritratti Autentici/IMG_20210520_185702_013.webp"
       ]
     }
   ],
