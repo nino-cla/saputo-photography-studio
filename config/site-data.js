@@ -31,6 +31,7 @@ const siteGenerated = {
       "title": "Benedetto & Enrica",
       "photos": [
         "assets/img/love-stories/Benedetto & Enrica/1.webp",
+        "assets/img/love-stories/Benedetto & Enrica/4.webp",
         "assets/img/love-stories/Benedetto & Enrica/DSCF7937.webp",
         "assets/img/love-stories/Benedetto & Enrica/DSCF7984.webp",
         "assets/img/love-stories/Benedetto & Enrica/DSCF8018.webp",
