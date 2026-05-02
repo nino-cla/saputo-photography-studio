@@ -57,11 +57,10 @@ function populateUI(data, pageContext) {
     return;
   }
 
-  const recentWorkPhotos = data.home_recent_works || data.home_photos || [];
-
-  const heroPhoto = data.bio_photo || recentWorkPhotos[0] || '';
-  renderBioHero(heroPhoto);
-  renderGallerySection(recentWorkPhotos, 'Recent Works');
+  if (pageContext === 'home') {
+    renderHomePhotos(data.home_photos || []);
+    return;
+  }
 }
 
 function initMobileNav() {
@@ -150,6 +149,36 @@ function renderBioHero(photoPath) {
   } else {
     heroImg.style.display = 'none';
   }
+}
+
+function renderHomePhotos(photos) {
+  const container = document.getElementById('home-photos-container');
+  if (!container) return;
+  container.innerHTML = '';
+
+  photos.forEach((photoPath, index) => {
+    const section = document.createElement('section');
+    section.className = 'fullscreen-photo-section reveal';
+
+    const img = document.createElement('img');
+    img.src = photoPath;
+    img.alt = `Nino Claudio Saputo Fotografia ${index + 1}`;
+    img.className = 'fullscreen-img';
+
+    section.appendChild(img);
+
+    if (index === 0) {
+      const overlay = document.createElement('div');
+      overlay.className = 'photo-overlay';
+      const text = document.createElement('h1');
+      text.className = 'overlay-text';
+      text.textContent = 'Nino Claudio Saputo | Fotografo';
+      overlay.appendChild(text);
+      section.appendChild(overlay);
+    }
+
+    container.appendChild(section);
+  });
 }
 
 function renderGallerySection(photos, label) {

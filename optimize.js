@@ -5,7 +5,6 @@ const sharp = require('sharp');
 
 const ROOT_DIR = __dirname;
 const HOME_DIR = path.join(ROOT_DIR, 'assets', 'img', 'home');
-const HOME_RECENT_DIR = path.join(HOME_DIR, 'recent-works');
 const HOME_BIO_DIR = path.join(ROOT_DIR, 'assets', 'img', 'bio');
 const LOVE_STORIES_DIR = path.join(ROOT_DIR, 'assets', 'img', 'love-stories');
 const AUTHENTIC_PORTRAITS_DIR = path.join(ROOT_DIR, 'assets', 'img', 'authentic-portraits');
@@ -20,23 +19,21 @@ const SUPPORTED_EXTENSIONS = new Set([...SOURCE_EXTENSIONS, '.webp']);
     await Promise.all([
       ensureDirectory(HOME_DIR),
       ensureDirectory(HOME_BIO_DIR),
-      ensureDirectory(HOME_RECENT_DIR),
       ensureDirectory(LOVE_STORIES_DIR),
       ensureDirectory(AUTHENTIC_PORTRAITS_DIR),
       ensureDirectory(PROJECTS_DIR)
     ]);
 
     const bioLabel = relativeFromRoot(HOME_BIO_DIR);
-    const recentLabel = relativeFromRoot(HOME_RECENT_DIR);
 
     console.log(`>> Ottimizzazione ${bioLabel}`);
     const bioPhotos = await processFlatDirectory(HOME_BIO_DIR);
     const heroPhoto = bioPhotos[0] || null;
     console.log(`   -> ${bioPhotos.length} file processati in ${bioLabel}.`);
 
-    console.log(`>> Ottimizzazione ${recentLabel}`);
-    const recentWorkPhotos = await processFlatDirectory(HOME_RECENT_DIR);
-    console.log(`   -> ${recentWorkPhotos.length} file processati in ${recentLabel}.`);
+    console.log(`>> Ottimizzazione Home Photos`);
+    const homePhotos = await processFlatDirectory(HOME_DIR);
+    console.log(`   -> ${homePhotos.length} file processati in Home.`);
 
     console.log(`>> Scansione Love Stories`);
     const loveStoriesSections = await buildSections(LOVE_STORIES_DIR);
@@ -49,7 +46,7 @@ const SUPPORTED_EXTENSIONS = new Set([...SOURCE_EXTENSIONS, '.webp']);
 
     await updateDataFile({
       bio_photo: heroPhoto,
-      home_recent_works: recentWorkPhotos,
+      home_photos: homePhotos.slice(0, 2),
       love_stories_sections: loveStoriesSections,
       authentic_portraits_sections: authenticPortraitsSections,
       projects_sections: projectsSections
