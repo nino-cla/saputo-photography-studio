@@ -948,4 +948,23 @@ body.nav-open .nav-overlay {
     .gallery-section {
         padding-bottom: var(--spacing-sm);
     }
+
+    /* Home Fullscreen Mobile */
+    .fullscreen-photo-section {
+        height: 80vh;
+        margin-bottom: 2rem;
+    }
+
+    .photo-overlay {
+        padding: 2rem;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .overlay-text {
+        white-space: normal;
+        text-align: center;
+        font-size: 1.5rem;
+        line-height: 1.4;
+    }
 }
