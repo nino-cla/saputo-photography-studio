@@ -16,7 +16,7 @@ Sito web vetrina per la fotografia di Antonino Saputo. Il progetto si compone di
 
 Ogni sezione del sito carica dinamicamente le foto scansionando delle specifiche cartelle.
 
-- `assets/img/home/bio/`: La tua foto ritratto usata nella Homepage. Il sistema sceglierà la prima in ordine alfabetico.
+- `assets/img/bio/`: La tua foto ritratto usata nella Homepage. Il sistema sceglierà la prima in ordine alfabetico.
 - `assets/img/home/recent-works/`: Tutte le tue foto "Recent Works" per la Homepage.
 - `assets/img/love-stories/`: Raggruppate in sottocartelle (es. "Marco e Giada", "Anna e Luigi") per la sezione Storie d'Amore.
 - `assets/img/authentic-portraits/`: Raggruppate in sottocartelle per la sezione Ritratti.

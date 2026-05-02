@@ -1,5 +1,5 @@
 const siteGenerated = {
-  "bio_photo": "assets/img/home/bio/1.webp",
+  "bio_photo": null,
   "home_recent_works": [
     "assets/img/home/recent-works/DSCF1025.webp",
     "assets/img/home/recent-works/DSCF1110.webp",
@@ -86,13 +86,13 @@ const siteGenerated = {
   ],
   "projects_sections": [
     {
-      "slug": "Be spoke",
-      "title": "Be spoke",
+      "slug": "Be Spoke",
+      "title": "Be Spoke",
       "photos": [
-        "assets/img/projects/Be spoke/DSCF1337.webp",
-        "assets/img/projects/Be spoke/DSCF1352.webp",
-        "assets/img/projects/Be spoke/DSCF7571.webp",
-        "assets/img/projects/Be spoke/DSCF7572.webp"
+        "assets/img/projects/Be Spoke/DSCF1337.webp",
+        "assets/img/projects/Be Spoke/DSCF1352.webp",
+        "assets/img/projects/Be Spoke/DSCF7571.webp",
+        "assets/img/projects/Be Spoke/DSCF7572.webp"
       ]
     }
   ]
