@@ -46,7 +46,7 @@ const SUPPORTED_EXTENSIONS = new Set([...SOURCE_EXTENSIONS, '.webp']);
 
     await updateDataFile({
       bio_photo: heroPhoto,
-      home_photos: homePhotos.slice(0, 2),
+      home_photos: homePhotos.slice(0, 3),
       love_stories_sections: loveStoriesSections,
       authentic_portraits_sections: authenticPortraitsSections,
       projects_sections: projectsSections

@@ -335,47 +335,95 @@ body.nav-open .nav-overlay {
     padding-bottom: 140px;
 }
 
-/* Fullscreen Home Photos */
-.fullscreen-photo-section {
+/* Home Hero Carousel */
+.home-hero-carousel {
     position: relative;
     width: 100%;
     height: 100vh;
     overflow: hidden;
-    margin-bottom: 4rem;
+    background-color: #000;
 }
 
-.fullscreen-photo-section:last-child {
-    margin-bottom: 0;
+.carousel-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
 }
 
-.fullscreen-img {
+.carousel-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out, transform 1.2s ease-out;
+    z-index: 1;
+    transform: scale(1.05);
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    z-index: 2;
+    transform: scale(1);
+}
+
+.carousel-slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
 }
 
-.photo-overlay {
+.carousel-overlay {
     position: absolute;
     inset: 0;
+    background: rgba(0, 0, 0, 0.2);
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    padding: 20vh 1.5rem 0 10vw;
-    background: rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
     z-index: 10;
 }
 
-.overlay-text {
+.carousel-text {
     font-family: var(--font-heading);
-    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-size: clamp(1.8rem, 5vw, 3.5rem);
     color: white;
-    text-align: left;
+    text-align: center;
     font-style: italic;
-    text-shadow: 0 4px 15px rgba(0, 0, 0, 1);
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     letter-spacing: 2px;
-    padding: 0;
-    white-space: nowrap;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-out 0.5s;
+}
+
+.carousel-slide.active .carousel-text {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.carousel-dots {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 20;
+}
+
+.carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-dot.active {
+    background: white;
+    width: 30px;
+    border-radius: 5px;
 }
 
 .hero-bio {

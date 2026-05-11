@@ -153,32 +153,86 @@ function renderBioHero(photoPath) {
 
 function renderHomePhotos(photos) {
   const container = document.getElementById('home-photos-container');
-  if (!container) return;
+  if (!container || !photos.length) return;
+
   container.innerHTML = '';
+  const carousel = document.createElement('div');
+  carousel.className = 'home-hero-carousel';
+
+  const inner = document.createElement('div');
+  inner.className = 'carousel-inner';
+
+  const dotsContainer = document.createElement('div');
+  dotsContainer.className = 'carousel-dots';
+
+  const slides = [];
+  const dots = [];
+  let currentIndex = 0;
+  let autoplayInterval;
+
+  const goToSlide = (index) => {
+    slides.forEach((s) => s.classList.remove('active'));
+    dots.forEach((d) => d.classList.remove('active'));
+
+    slides[index].classList.add('active');
+    dots[index].classList.add('active');
+    currentIndex = index;
+  };
+
+  const nextSlide = () => {
+    const next = (currentIndex + 1) % slides.length;
+    goToSlide(next);
+  };
+
+  const startAutoplay = () => {
+    stopAutoplay();
+    if (slides.length > 1) {
+      autoplayInterval = setInterval(nextSlide, 8000);
+    }
+  };
+
+  const stopAutoplay = () => {
+    if (autoplayInterval) clearInterval(autoplayInterval);
+  };
 
   photos.forEach((photoPath, index) => {
-    const section = document.createElement('section');
-    section.className = 'fullscreen-photo-section reveal';
+    const slide = document.createElement('div');
+    slide.className = `carousel-slide ${index === 0 ? 'active' : ''}`;
 
     const img = document.createElement('img');
     img.src = photoPath;
-    img.alt = `Nino Claudio Saputo | Fotografo Matrimoni e Reportage Palermo - Foto ${index + 1}`;
-    img.className = 'fullscreen-img';
+    img.alt = `Nino Claudio Saputo | Fotografo Matrimoni e Reportage Palermo - Slide ${index + 1}`;
 
-    section.appendChild(img);
+    const overlay = document.createElement('div');
+    overlay.className = 'carousel-overlay';
 
-    if (index === 0) {
-      const overlay = document.createElement('div');
-      overlay.className = 'photo-overlay';
-      const text = document.createElement('h1');
-      text.className = 'overlay-text';
-      text.textContent = 'Non cerco pose, racconto ciò che accade davvero.';
-      overlay.appendChild(text);
-      section.appendChild(overlay);
-    }
+    const text = document.createElement('h1');
+    text.className = 'carousel-text';
+    text.textContent = 'Non cerco pose, racconto ciò che accade davvero.';
 
-    container.appendChild(section);
+    overlay.appendChild(text);
+    slide.appendChild(img);
+    slide.appendChild(overlay);
+    inner.appendChild(slide);
+    slides.push(slide);
+
+    const dot = document.createElement('div');
+    dot.className = `carousel-dot ${index === 0 ? 'active' : ''}`;
+    dot.addEventListener('click', () => {
+      goToSlide(index);
+      startAutoplay(); // Reset interval on click
+    });
+    dotsContainer.appendChild(dot);
+    dots.push(dot);
   });
+
+  carousel.appendChild(inner);
+  carousel.appendChild(dotsContainer);
+  container.appendChild(carousel);
+
+  if (slides.length > 1) {
+    startAutoplay();
+  }
 }
 
 function renderGallerySection(photos, label) {
