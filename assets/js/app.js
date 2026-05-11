@@ -162,7 +162,7 @@ function renderHomePhotos(photos) {
 
     const img = document.createElement('img');
     img.src = photoPath;
-    img.alt = `Nino Claudio Saputo Fotografia ${index + 1}`;
+    img.alt = `Nino Claudio Saputo | Fotografo Matrimoni e Reportage Palermo - Foto ${index + 1}`;
     img.className = 'fullscreen-img';
 
     section.appendChild(img);
@@ -231,7 +231,8 @@ function renderSections(containerId, categories, folderName) {
     grid.className = 'masonry-grid';
 
     category.photos.forEach((photoPath, index) => {
-      const item = createGalleryItem(photoPath, `${category.title} ${index + 1}`, category.photos, index);
+      const altText = `Nino Claudio Saputo Fotografo Palermo - ${category.title} ${index + 1}`;
+      const item = createGalleryItem(photoPath, altText, category.photos, index);
       grid.appendChild(item);
     });
 
